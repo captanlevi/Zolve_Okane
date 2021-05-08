@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "f9949471-bcd4-419f-bdb3-4d8ee6bf1368",
+		"name": "Zolve_Okane",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Make transaction ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\" : 1,\r\n    \"amount\" : 300,\r\n    \"isCredit\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/app/transactionEndpoint",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"app",
+						"transactionEndpoint"
+					]
+				},
+				"description": "This request will make the requested transaction , if the amount is to be deducted and the remaining amount in the user wallet is lower than min amount , it will throw an error\n\nIt requires 3 things to make a transaction , \n1) The user id.\n2) The amount.\n3) Whether its credit or debit."
+			},
+			"response": []
+		},
+		{
+			"name": "Make Wallet ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\" : 2,\r\n    \"balance\": 2000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/app/walletEndpoint",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"app",
+						"walletEndpoint"
+					]
+				},
+				"description": "Use this request to open wallet for a user.\nrequired 2 things \n\n1) user id.  \n2) Initial Balance. (cant be lower than the min amount)."
+			},
+			"response": []
+		},
+		{
+			"name": "Get current Balance ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/app/searchUserWallet/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"app",
+						"searchUserWallet",
+						"1"
+					]
+				},
+				"description": "This request will fetch the wallet info , based on the user id."
+			},
+			"response": []
+		},
+		{
+			"name": "Get userInfo from email id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/accounts/userSearchEmail/rjlinkin69@gmail.com",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"userSearchEmail",
+						"rjlinkin69@gmail.com"
+					]
+				},
+				"description": "This is a util endpoint , to get user id based on email id"
+			},
+			"response": []
+		},
+		{
+			"name": "Get user Transactions ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/app/searchUserTransactions/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"app",
+						"searchUserTransactions",
+						"1"
+					]
+				},
+				"description": "The app stores all the past transactions , here is an api to get all transactions of a particular user , just add the user id to the url "
+			},
+			"response": []
+		},
+		{
+			"name": "Make user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"email\" : \"captainLevi@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/accounts/userEndPoint",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"userEndPoint"
+					]
+				},
+				"description": "This is a util api to make users fort better and easier testing of this code."
+			},
+			"response": []
+		}
+	]
+}
